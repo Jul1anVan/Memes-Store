@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+  .products
+    .product
+      h2 
+        strong = link_to product.name, product_path(product.id)
+
+      - if (product.image.empty?)
+        p
+          = image_tag product.meme.image
+
+      - else
+        p
+          = image_tag product.image
+
+      p
+        Normal Price:
+        = product.price
+
+      //p = link_to 'show', product_path(product.id)
+            
+          
+          
