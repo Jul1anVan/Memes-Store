@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   #get 'finder/index'
 
-  #get 'finder/category'
+  get '/products/category/:category' => 'finder#category', as: 'category'
+  get '/products/search/' => 'finder#search', as: 'search'
 
   resources :products, controller: 'finder'
   root 'finder#index'

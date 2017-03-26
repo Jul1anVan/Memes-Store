@@ -1,2 +1,8 @@
-h1 Finder#category
-p Find me in app/views/finder/category.html.slim
+h1
+  strong Category:
+  = @category.name
+
+- if @products.nil?
+  p No results found. Please try again.
+- else
+  = render @products

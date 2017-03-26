@@ -1,0 +1,28 @@
+
+javascript:
+        function navigate(value) {
+            document.location.href = "http://localhost:3000/products/category/" + value;
+        }
+
+nav class="navbar navbar-default" role="navigation"
+  div class="container"
+    div class="navbar-header"
+      a class="navbar-brand" href="/" All Products
+
+
+
+
+- categories = Category.all
+
+//p = link_to "category wholesome",
+div class="dropdown"
+  select onChange="navigate(this.value)"
+    option = 'Please Choose a category!'
+    - categories.each do |category|
+      option [value = category.id ] = category.name
+    end
+
+//option = link_to category.name, category_path(category.id)
+
+
+
