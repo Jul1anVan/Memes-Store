@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325181029) do
+ActiveRecord::Schema.define(version: 20170326003806) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -52,8 +52,7 @@ ActiveRecord::Schema.define(version: 20170325181029) do
   create_table "customers", force: :cascade do |t|
     t.integer  "province_id"
     t.string   "first_name"
-    t.string   "last_"
-    t.string   "name"
+    t.string   "last_name"
     t.string   "address"
     t.string   "city"
     t.string   "postal_code"
