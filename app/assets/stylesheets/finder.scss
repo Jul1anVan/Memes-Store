@@ -7,34 +7,33 @@ h1{
 
 .products
 {
-  margin: auto;
+  margin-top: 100px;
   width: 75%
 
 }
-
-.product{
-  box-shadow: 10px 10px 5px #888888;
-  padding: 10px;
-  margin: 1em;
-  width: 500px;
-  height: 550px;
-  float:left;
-
-  img{
-    height: 300px;
-    width: 300px;
-  }
-}
-
-ul{
-  list-style-type: none;
-}
-ul li{
-  font-size: 20px;
-}
-
 body{
   form{
     float: right;
   }
+}
+
+.products
+  .custom-image{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+
+    img{
+      width: 100%;
+    }
+}
+
+.product
+  .custom-image {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+    }
 }

@@ -1,7 +1,7 @@
 
 javascript:
         function navigate(value) {
-            document.location.href = "http://localhost:3000/products/category/" + value;
+            document.location.href = "/products/category/" + value;
         }
 
 nav class="navbar navbar-default" role="navigation"
@@ -10,17 +10,36 @@ nav class="navbar navbar-default" role="navigation"
       a class="navbar-brand" href="/" All Products
 
 
-
-
 - categories = Category.all
 
+= form_tag("/products/search", method: "get") do
+  = label_tag(:search, "Search for:")
+  = text_field_tag(:search)
+  .col-md-6
+    = select_tag :category, options_from_collection_for_select(categories, 'id', 'name'), :include_blank => 'All Categories'
+    = submit_tag("Search")
+
+
+
+    /- options = options_from_collection_for_select(@category, 'id', 'name')
+    /= f.select :all_val,  options
+
+        <div>
+              <%= label_tag "Foo" %>
+          </div>
+          <div>
+              <%= select_tag("foo", options_for_select(@foos_list, :selected => @selected_foo)) %>
+          </div>
+
+
+
 //p = link_to "category wholesome",
-div class="dropdown"
-  select onChange="navigate(this.value)"
-    option = 'Please Choose a category!'
-    - categories.each do |category|
-      option [value = category.id ] = category.name
-    end
+/div class="dropdown"
+/  select onChange="navigate(this.value)"
+/    option = 'Please Choose a category!'
+/    - categories.each do |category|
+/      option [value = category.id ] = category.name
+/    end
 
 //option = link_to category.name, category_path(category.id)
 

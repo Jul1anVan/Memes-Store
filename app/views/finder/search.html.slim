@@ -1,6 +1,16 @@
-h1 Search Products
+h1
+  strong Search:
+  = @search_params
 
-- if @products.nil?
-  p No results found. Please try again.
+- if @category.present?
+  h1
+    strong Category:
+    = @category.name
+
+- if @products.present?
+  .products
+    .container
+      .row
+        = render @products
 - else
-  = render @products
+  p No results found. Please try again.

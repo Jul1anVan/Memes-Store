@@ -1,23 +1,73 @@
-doctype html
-html
-  .products
-    .product
-      h2 
-        strong = link_to product.name, product_path(product.id)
 
-      - if (product.image.empty?)
-        p
-          = image_tag product.meme.image
 
-      - else
-        p
-          = image_tag product.image
+  /.products
+  /  .product
+  /    h2
+  /      strong = link_to product.name, product_path(product.id)
+  /
+  /    - if (product.image.empty?)
+  /      p
+  /        = image_tag product.meme.image
+  /
+  /    - else
+  /      p
+  /        = image_tag product.image
+  /
+  /    h4
+  /      Normal Price:
+  /      = product.price
 
-      p
-        Normal Price:
-        = product.price
+      /p = link_to 'show', product_path(product.id)
 
-      //p = link_to 'show', product_path(product.id)
+
+
+  .col-sm-4.col-lg-4.col-md-4
+    .thumbnail
+      .custom-image
+        - if (product.image.empty?)
+          p
+            = image_tag product.meme.image
+        - else
+          p
+            = image_tag product.image
+
+      .caption
+        h4.pull-right
+          '$
+          = product.price
+        h4
+          = link_to product.name, product_path(product.id)
+
+
+
+
+
+
+
+        /
+        /<div class="col-sm-4 col-lg-4 col-md-4">
+        /  <div class="thumbnail">
+        /    <img src="img/<%= poke.ProductImage %>.jpg" alt="" height="200">
+        /    <div class="caption">
+        /      <h4 class="pull-right">$<%= poke.ProductPrice %></h4>
+        /      <h4><%= link_to poke.ProductName.first(20), detail_path(poke.ProductID) %></a>
+        /      </h4>
+        /
+        /
+        /      <p>Genre: <%= poke.ProductGenreID %></p>
+        /    </div>
+        /    <div class="ratings">
+        /      <p class="pull-right">15 reviews</p>
+        /      <p>
+        /        <span class="glyphicon glyphicon-star"></span>
+        /        <span class="glyphicon glyphicon-star"></span>
+        /        <span class="glyphicon glyphicon-star"></span>
+        /        <span class="glyphicon glyphicon-star"></span>
+        /        <span class="glyphicon glyphicon-star"></span>
+        /      </p>
+        /    </div>
+        /  </div>
+        /  </div>
+
             
-          
-          
+

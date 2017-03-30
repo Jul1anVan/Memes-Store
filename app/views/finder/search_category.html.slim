@@ -1,0 +1,15 @@
+h1
+  normal Search:
+  = @search_params
+h1
+  normal Category:
+  = @category.name
+
+- if @products.present?
+  = render @products
+- else
+  br
+  .lead
+    .text-center
+      p
+        Strong No results found. Please try again.

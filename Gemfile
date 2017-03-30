@@ -5,16 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
-gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
-
-gem 'devise'
-
-gem 'slim-rails'
-
-gem 'bootstrap-sass', '~> 3.3.6'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
@@ -60,3 +50,14 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+
+gem 'devise'
+
+gem 'slim-rails'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'carrierwave', '~> 1.0'

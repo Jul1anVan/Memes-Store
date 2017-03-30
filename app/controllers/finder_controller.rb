@@ -15,7 +15,15 @@ class FinderController < ApplicationController
   end
 
   def search
-    @params = params[:search]
-    @products = Product.where("name like ?", "%"+@params+"%")
+    @search_params = params[:search]
+    @category_params = params[:category]
+
+    if @category_params.present?
+        @products = Product.where("name LIKE ? AND category_id LIKE ?", '%'+@search_params+'%',  @category_params)
+        @category = Category.find(@category_params)
+    else
+      @products = Product.where("name like ?", "%"+@search_params+"%")
+    end
   end
+
 end

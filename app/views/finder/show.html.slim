@@ -1,3 +1,9 @@
 p
   strong Name:
   = @product.name
+
+- if @products.present?
+    p No results found. Please try again.
+- else
+  .product
+    = render @product
