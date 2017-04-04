@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :customers
   #get 'finder/index'
 
   get '/products/category/:category' => 'finder#category', as: 'category'

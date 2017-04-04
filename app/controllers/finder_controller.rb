@@ -1,4 +1,6 @@
 class FinderController < ApplicationController
+
+  before_filter  :authenticate_customer!
   def index
     @products = Product.all().page(params[:page]).per(3)
     #@products = Product.all
