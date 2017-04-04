@@ -17,12 +17,7 @@ nav class="navbar navbar-default" role="navigation"
         a class="navbar-brand" href="/products/category/ #{category.id}" #{category.name}
 
 
-- if customer_signed_in?
-  li
-    = link_to('Logout', destroy_customer_session_path, :method => :delete)
-- else
-  li
-    = link_to('Login', new_customer_session_path)
+
 
 
 = form_tag("/products/search", method: "get") do
@@ -31,6 +26,14 @@ nav class="navbar navbar-default" role="navigation"
   .col-md-6
     = select_tag :category, options_from_collection_for_select(categories, 'id', 'name'), :include_blank => 'All Categories'
     = submit_tag("Search")
+
+    ul.list-group
+    - if customer_signed_in?
+      li.list-group-item
+        = link_to('Logout', destroy_customer_session_path, :method => :delete)
+    - else
+      li.list-group-item
+        = link_to('Login', new_customer_session_path)
 
 
 
