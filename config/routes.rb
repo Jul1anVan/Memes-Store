@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :customers
+
   #get 'finder/index'
 
   get '/products/category/:category' => 'finder#category', as: 'category'
@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :products, controller: 'finder'
   root 'finder#index'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :customers, :controllers => { registrations: 'registrations' }
+
+    devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,12 @@ nav class="navbar navbar-default" role="navigation"
       a class="navbar-brand" href="/" All Products
       a class="navbar-brand" href="/products/2" Dank Memes
 
-
+- if customer_signed_in?
+  li
+    = link_to('Logout', destroy_customer_session_path, :method => :delete)
+- else
+  li
+    = link_to('Login', new_customer_session_path)
 - categories = Category.all
 
 = form_tag("/products/search", method: "get") do

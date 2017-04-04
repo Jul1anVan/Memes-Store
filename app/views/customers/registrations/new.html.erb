@@ -3,9 +3,10 @@
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
-
+    <div class="field">
       <%= f.label :Province %><br />
       <%= f.collection_select :province_id, Province.all, :id, :name, { :include_blank => "Pick your province"}%>
+    </div>
 
     <div class="field">
       <%= f.label :first_name %><br />
