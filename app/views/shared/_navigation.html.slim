@@ -1,14 +1,16 @@
-
-javascript:
-        function navigate(value) {
-            document.location.href = "/products/category/" + value;
-        }
+/
+//javascript:
+//        function navigate(value) {
+//            document.location.href = "/products/category/" + value;
+//        }
+- categories = Category.all
 
 nav class="navbar navbar-default" role="navigation"
   div class="container"
     div class="navbar-header"
       a class="navbar-brand" href="/" All Products
-      a class="navbar-brand" href="/products/2" Dank Memes
+      - categories.each do |i|
+        a class="navbar-brand" href="/products/category/ #{i.id}" #{i.name}
 
 - if customer_signed_in?
   li
@@ -16,7 +18,7 @@ nav class="navbar navbar-default" role="navigation"
 - else
   li
     = link_to('Login', new_customer_session_path)
-- categories = Category.all
+
 
 = form_tag("/products/search", method: "get") do
   = label_tag(:search, "Search for:")
@@ -25,29 +27,6 @@ nav class="navbar navbar-default" role="navigation"
     = select_tag :category, options_from_collection_for_select(categories, 'id', 'name'), :include_blank => 'All Categories'
     = submit_tag("Search")
 
-
-
-    /- options = options_from_collection_for_select(@category, 'id', 'name')
-    /= f.select :all_val,  options
-
-        <div>
-              <%= label_tag "Foo" %>
-          </div>
-          <div>
-              <%= select_tag("foo", options_for_select(@foos_list, :selected => @selected_foo)) %>
-          </div>
-
-
-
-//p = link_to "category wholesome",
-/div class="dropdown"
-/  select onChange="navigate(this.value)"
-/    option = 'Please Choose a category!'
-/    - categories.each do |category|
-/      option [value = category.id ] = category.name
-/    end
-
-//option = link_to category.name, category_path(category.id)
 
 
 
