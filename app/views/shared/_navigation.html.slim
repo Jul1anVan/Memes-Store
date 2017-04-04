@@ -4,13 +4,18 @@
 //            document.location.href = "/products/category/" + value;
 //        }
 - categories = Category.all
+- pages = Page.all
 
 nav class="navbar navbar-default" role="navigation"
   div class="container"
     div class="navbar-header"
       a class="navbar-brand" href="/" All Products
-      - categories.each do |i|
-        a class="navbar-brand" href="/products/category/ #{i.id}" #{i.name}
+      - pages.each do | page |
+        a class="navbar-brand" href="/products/page/ #{page.id}" #{page.title}
+
+      - categories.each do |category|
+        a class="navbar-brand" href="/products/category/ #{category.id}" #{category.name}
+
 
 - if customer_signed_in?
   li

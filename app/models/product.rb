@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  has_many :line_item
+  has_many :line_items
   belongs_to :category
   belongs_to :meme
 

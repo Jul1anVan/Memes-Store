@@ -11,6 +11,6 @@ h1
   .products
     .container
       .row
-        = render @products
+        = render @products, line_item: @line_item
 - else
   p No results found. Please try again.

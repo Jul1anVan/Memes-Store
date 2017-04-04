@@ -1,13 +1,14 @@
 class FinderController < ApplicationController
 
   before_filter  :authenticate_customer!
+  before_action :initialize_line_item
+
   def index
     @products = Product.all().page(params[:page]).per(3)
     #@products = Product.all
   end
 
   def show
-
     @product = Product.find(params[:id])
   end
 
@@ -28,6 +29,12 @@ class FinderController < ApplicationController
     else
       @products = Product.where("name like ?", "%"+@search_params+"%")
     end
+  end
+
+  private
+
+  def initialize_line_item
+    @line_item = current_order.line_items.new
   end
 
 end
