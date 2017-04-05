@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   has_many :line_items
   belongs_to :customer
   belongs_to :status
-  before_create :set_order_status
+  before_validation :set_order_status
   before_save :update_subtotal
 
 
@@ -15,7 +15,7 @@ class Order < ApplicationRecord
 
 private
   def set_order_status
-    self.status_id = 1
+    self.status_id = 1 if self.status_id.nil?
   end
 
   def update_subtotal

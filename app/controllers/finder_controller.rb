@@ -1,6 +1,4 @@
 class FinderController < ApplicationController
-
-  before_filter  :authenticate_customer!
   before_action :initialize_line_item
 
   def index
