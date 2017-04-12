@@ -22,59 +22,30 @@
 
 
   .col-sm-12.col-lg-4.col-md-4
-    .thumbnail
-      .custom-image
-        - if (product.image.empty?)
-          p
-            = image_tag product.meme.image
-        - else
-          p
-            = image_tag product.image
+    .item
+      .thumbnail#bootstrap-overrides-thumbnail
+        .custom-image
+          - if (product.image.empty?)
+            p
+              = image_tag product.meme.image
+          - else
+            p
+              = image_tag product.image
+        .caption
+          h4.pull-right
+            = link_to product.name, product_path(product.id)
+          h4.pull-left
+            '$
+            = product.price
 
-      .caption
-        h4.pull-right
-          '$
-          = product.price
-        h4
-          = link_to product.name, product_path(product.id)
+        //br
+        .cart
+          //h4 Add To Cart:
+          = form_for line_item, remote: true do |f|
+            .input-group
+              = f.number_field :quantity, value: 1, class: "form-control", min: 1
+              .input-group-btn
+                = f.hidden_field :product_id, value: product.id
+                = f.submit "Add to Cart", class: "btn btn-primary"
 
-        = form_for line_item, remote: true do |f|
-          .input-group
-            = f.number_field :quantity, value: 1, class: "form-control", min: 1
-            .input-group-btn
-              = f.hidden_field :product_id, value: product.id
-              = f.submit "Add to Cart", class: "btn btn-primary"
-
-
-
-
-
-
-
-        /
-        /<div class="col-sm-4 col-lg-4 col-md-4">
-        /  <div class="thumbnail">
-        /    <img src="img/<%= poke.ProductImage %>.jpg" alt="" height="200">
-        /    <div class="caption">
-        /      <h4 class="pull-right">$<%= poke.ProductPrice %></h4>
-        /      <h4><%= link_to poke.ProductName.first(20), detail_path(poke.ProductID) %></a>
-        /      </h4>
-        /
-        /
-        /      <p>Genre: <%= poke.ProductGenreID %></p>
-        /    </div>
-        /    <div class="ratings">
-        /      <p class="pull-right">15 reviews</p>
-        /      <p>
-        /        <span class="glyphicon glyphicon-star"></span>
-        /        <span class="glyphicon glyphicon-star"></span>
-        /        <span class="glyphicon glyphicon-star"></span>
-        /        <span class="glyphicon glyphicon-star"></span>
-        /        <span class="glyphicon glyphicon-star"></span>
-        /      </p>
-        /    </div>
-        /  </div>
-        /  </div>
-
-            
 

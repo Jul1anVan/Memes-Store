@@ -1,0 +1,10 @@
+//#{number_to_currency current_order.subtotal}
+h1 Customer Name: #{current_customer.first_name} #{current_customer.last_name}
+
+h1 Shipping Address:  #{current_customer.province.name}, #{current_customer.city}, #{current_customer.address}
+
+p
+  - @line_items.each do |line_item|
+    = render 'carts/cart_row', product: line_item.product, line_item: line_item, show_total: true
+
+

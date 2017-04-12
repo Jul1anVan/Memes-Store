@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
+  get '/submit_order' => 'order#submit', as: 'order'
+
   #get 'finder/index'
 
   get '/products/category/:category' => 'finder#category', as: 'category'

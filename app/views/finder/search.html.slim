@@ -12,5 +12,6 @@ h1
     .container
       .row
         = render @products, line_item: @line_item
+      = paginate @products
 - else
   p No results found. Please try again.
