@@ -1,15 +1,8 @@
 class OrderController < ApplicationController
-  before_filter  :authenticate_customer!
+  before_filter :authenticate_customer!
+  before_action :initialize_order_variables
 
   def submit
-    @line_items = current_order.line_items
-
-    @customer = current_customer
-
-    @order = current_order
-
-    @order.update(:customer_id => @customer.id)
-
     tax = 0.00
 
     if @customer.province.pst.present?
@@ -32,7 +25,16 @@ class OrderController < ApplicationController
     @order.total = @order.subtotal + tax_total
 
     @order.save
-    #@customer =
   end
+
+  private
+
+  def initialize_order_variables
+    @line_items = current_order.line_items
+    @customer = current_customer
+    @order = current_order
+    @order.update(customer_id: @customer.id)
+  end
+
 
 end

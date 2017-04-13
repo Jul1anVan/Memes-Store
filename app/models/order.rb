@@ -4,8 +4,6 @@ class Order < ApplicationRecord
   belongs_to :status
   before_validation :set_order_status
   before_save :update_subtotal
-
-
   before_create :set_order_status
   before_save :update_subtotal
 
@@ -13,9 +11,10 @@ class Order < ApplicationRecord
     line_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end
 
-private
+  private
+
   def set_order_status
-    self.status_id = 1 #if self.status_id.nil?
+    self.status_id = 1 # if self.status_id.nil?
   end
 
   def update_subtotal
