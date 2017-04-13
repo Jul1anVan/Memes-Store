@@ -1,5 +1,5 @@
 class OrderController < ApplicationController
-  before_filter :authenticate_customer!
+  before_action :authenticate_customer!
   before_action :initialize_order_variables, :check_pst, :check_gst, :check_hst
 
   def submit

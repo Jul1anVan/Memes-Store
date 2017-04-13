@@ -15,13 +15,14 @@ class FinderController < ApplicationController
     @params = params[:category]
 
     @category = Category.find(@params)
-    @products = Product.where(:category_id => @params).all
+    @products = Product.where(category_i: @params).all
   end
 
   def search
     if @category_params.present?
-      @products = Product.where("name LIKE ? AND category_id LIKE ?",
-                                '%' + @search_params + '%', @category_params).order('name').page(params[:page]).per(3)
+      @products = Product.where('name LIKE ? AND category_id LIKE ?',
+                                '%' + @search_params + '%',
+                                @category_params).order('name').page(params[:page]).per(3)
       @category = Category.find(@category_params)
     else
       @products = Product.where('name like ?', '%' +
@@ -39,5 +40,4 @@ class FinderController < ApplicationController
     @search_params = params[:search]
     @category_params = params[:category]
   end
-
 end
