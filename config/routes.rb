@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :products, controller: 'finder'
   resource :carts, only: [:show]
   resources :line_items, only: [:create, :update, :destroy], controller: 'line_item'
+  resources :charges, only: [:new, :create]
 
   root 'finder#index'
 
