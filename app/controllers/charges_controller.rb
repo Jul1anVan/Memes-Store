@@ -13,11 +13,13 @@ class ChargesController < ApplicationController
                                     description: 'Rails Stripe customer',
                                     currency:    'cad')
 
-    # if @charge.paid && @charge.amount == amount
-    #   order.status_id = 2
-    #   order.stripe_charge_id = @charge.id
-    #   order.save
-    # end
+    order = current_order
+    if @charge.paid && @charge.amount == amount
+      order.status_id = 2
+      order.stripe_charge_id = @charge.id
+      order.save
+      session.delete(:order_id)
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
