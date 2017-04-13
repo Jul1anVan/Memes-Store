@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'line_items/create'
-
-  get 'line_items/update'
-
-  get 'line_items/destroy'
-
-  get 'carts/show'
-
   get '/submit_order' => 'order#submit', as: 'order'
 
   #get 'finder/index'

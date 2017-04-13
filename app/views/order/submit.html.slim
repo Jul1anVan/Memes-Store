@@ -7,4 +7,8 @@ p
   - @line_items.each do |line_item|
     = render 'carts/cart_row', product: line_item.product, line_item: line_item, show_total: true
 
+    = form_tag(order_path, method: "get") do
+      .col-md-6
+        = submit_tag("Purchase")
+
 
