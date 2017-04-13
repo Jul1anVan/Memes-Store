@@ -18,6 +18,12 @@ class FinderController < ApplicationController
     @products = Product.where(category_i: @params).all
   end
 
+  def page
+    @params = params[:page]
+
+    @page = Page.find(@params)
+  end
+
   def search
     return if @category_params.present?
     @products = Product.where('name like ?', '%' +

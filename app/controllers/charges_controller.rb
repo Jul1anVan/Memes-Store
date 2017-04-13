@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
   end
 
   def create
-    amount = (current_order.total.to_f* 100).to_i
+    amount = (current_order.total.to_f * 100).to_i
     @customer = Stripe::Customer.create(email:  params[:stripeEmail],
                                         source: params[:stripeToken])
     @charge = Stripe::Charge.create(customer:    @customer.id,

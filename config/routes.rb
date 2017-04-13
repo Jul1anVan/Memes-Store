@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   #get 'finder/index'
 
+  get '/products/page/:page' => 'finder#page', as: 'page'
   get '/products/category/:category' => 'finder#category', as: 'category'
   get '/products/search/' => 'finder#search', as: 'search'
   get '/products/search_category/' => 'finder#search_category', as: 'search_category'
