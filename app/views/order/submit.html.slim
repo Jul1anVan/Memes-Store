@@ -7,13 +7,13 @@ h1 Shipping Address:  #{@customer.province.name}, #{@customer.city}, #{@customer
 h1 Subtotal: #{current_order.subtotal}
 
 - if @customer.province.pst.present?
-  h1 Pst: #{@customer.province.pst * 100}%
+    h1 Pst: #{@customer.province.pst * 100}%
 
 - if @customer.province.gst.present?
-  h1 Pst: #{@customer.province.gst * 100}%
+    h1 Gst: #{@customer.province.gst * 100}%
 
-- if @customer.province.pst.present?
-  h1 Pst: #{@customer.province.hst * 100}%
+- if @customer.province.hst.present?
+    h1 Hst: #{@customer.province.hst * 100}%
 
 p
   - @line_items.each do |line_item|
