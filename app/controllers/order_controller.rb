@@ -13,15 +13,18 @@ class OrderController < ApplicationController
     tax = 0.00
 
     if @customer.province.pst.present?
-    tax += @customer.province.pst
+      tax += @customer.province.pst
+      @order.pst_rate = @customer.province.pst
     end
 
     if @customer.province.gst.present?
-    tax += @customer.province.gst
+      tax += @customer.province.gst
+      @order.gst_rate = @customer.province.gst
     end
 
     if @customer.province.pst.present?
-    tax += @customer.province.hst
+      tax += @customer.province.hst
+      @order.gst_rate = @customer.province.gst
     end
 
     tax_total = (tax * @order.subtotal).round(2)
