@@ -11,5 +11,4 @@ class Customer < ApplicationRecord
   validates :province_id, :first_name, :last_name, :address, :city, :postal_code, presence: true
   validates :email, uniqueness: true
   validates :postal_code, format: { with: canadian_postal_code }
-
 end
