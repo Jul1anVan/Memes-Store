@@ -1,15 +1,13 @@
 class ChargesController < ApplicationController
   def new
-    @amount = current_order.subtotal.to_f*100
+    @amount = current_order.subtotal.to_f * 100
     @description = 'Description of Charge'
   end
 
   def create
-    amount = current_order.subtotal.to_f*100
-
+    amount = current_order.subtotal.to_f * 100
     @customer = Stripe::Customer.create(email:  params[:stripeEmail],
                                         source: params[:stripeToken])
-
     @charge = Stripe::Charge.create(customer:    @customer.id,
                                     amount:      amount,
                                     description: 'Rails Stripe customer',
@@ -19,8 +17,3 @@ class ChargesController < ApplicationController
     redirect_to new_charge_path
   end
 end
-
-
-
-
-

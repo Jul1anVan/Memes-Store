@@ -3,5 +3,5 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :meme
 
-  validates :name, :price, :description, :price, :stock, :presence => true
+  validates :name, :price, :description, :price, :stock, presence: true
 end

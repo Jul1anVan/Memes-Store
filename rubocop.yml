@@ -7,11 +7,11 @@ AllCops:
     - test/**/*
     - app/admin/**/*
 
-  Encoding:
-    Enabled: false
+Encoding:
+  Enabled: false
 
-  Documentation:
-    Enabled: false
+Documentation:
+  Enabled: false
 
-  Metrics/LineLength:
-    Max: 99
+Metrics/LineLength:
+  Max: 99
