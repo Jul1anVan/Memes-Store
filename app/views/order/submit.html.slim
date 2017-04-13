@@ -4,16 +4,25 @@ h1 Customer Name: #{@customer.first_name} #{@customer.last_name}
 
 h1 Shipping Address:  #{@customer.province.name}, #{@customer.city}, #{@customer.address}
 
-h1 Subtotal: #{current_order.subtotal}
+h1 Subtotal: $#{current_order.subtotal}
 
-- if @customer.province.pst.present?
-    h1 Pst: #{@customer.province.pst * 100}%
+- if @customer.province.pst.nil? || @customer.province.pst == 0
 
-- if @customer.province.gst.present?
-    h1 Gst: #{@customer.province.gst * 100}%
+- else
+      h1 Pst: #{@customer.province.pst * 100}%
 
-- if @customer.province.hst.present?
+
+- if @customer.province.gst.nil? || @customer.province.gst == 0
+
+- else
+      h1 Gst: #{@customer.province.gst * 100}%
+
+
+- if @customer.province.hst.nil? || @customer.province.hst == 0
+
+- else
     h1 Hst: #{@customer.province.hst * 100}%
+
 
 p
   - @line_items.each do |line_item|
