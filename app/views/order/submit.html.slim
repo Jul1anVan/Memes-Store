@@ -23,6 +23,9 @@ h1 Subtotal: $#{current_order.subtotal}
 - else
     h1 Hst: #{@customer.province.hst * 100}%
 
+h1 Total Tax: $#{@tax_total}
+h1 Order Total: $#{@order.total}
+
 
 p
   - @line_items.each do |line_item|

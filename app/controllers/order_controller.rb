@@ -3,9 +3,9 @@ class OrderController < ApplicationController
   before_action :initialize_order_variables, :check_pst, :check_gst, :check_hst
 
   def submit
-    tax_total = (@tax * @order.subtotal).round(2)
+    @tax_total = (@tax * @order.subtotal).round(2)
 
-    @order.total = @order.subtotal + tax_total
+    @order.total = @order.subtotal + @tax_total
 
     @order.save
   end
